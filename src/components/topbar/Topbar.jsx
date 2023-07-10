@@ -3,21 +3,19 @@ import { Search } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router";
 import { useContext, useState } from "react";
 import { userContext } from "../../userContext";
-import { ReactSession } from "react-client-session";
 import Registration from "../../pages/Registration/Registration";
 
 export default function Topbar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { userInfo, logout, setUserInfo } = useContext(userContext);
+  const { userInfo, logout, restartSession } = useContext(userContext);
   const navigate = useNavigate();
   const navigateTo = (route) => {
     navigate(route);
   };
-  if (ReactSession.get("user") !== "" && !userInfo) {
-    setUserInfo(JSON.parse(ReactSession.get("user")));
-  }
+  restartSession();
+
   const location = useLocation();
 
   return (

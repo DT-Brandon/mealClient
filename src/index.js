@@ -11,9 +11,3 @@ root.render(
     <App />
   </UserContextProvider>
 );
-/* ReactDOM.render(
- <UserContextProvider>
-    <App />
-  </UserContextProvider> ,
-  document.getElementById("root")
-); */
